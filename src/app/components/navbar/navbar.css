@@ -15,8 +15,6 @@
     justify-content: space-between;
   }
 
-
-
   .navbarSection {
     cursor: pointer;
     font-size: 14px;
@@ -108,7 +106,10 @@
 
   .navbarSections {
     display: flex;
+    position: absolute;
     margin-top: 60px;
+    width: 100%;
+    z-index: 60;
     flex-direction: column;
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.61);
   }
@@ -168,15 +169,15 @@
   }
 
   .menu {
-    top: 16px;
-    right: 13px;
-    height: 28px;
+    top: 21px;
+    right: 16px;
+    height: 18px;
     position: absolute;
   }
 
   .close {
-    top: 20px;
-    right: 17px;
+    top: 21px;
+    right: 21px;
     height: 19px;
     position: absolute;
   }

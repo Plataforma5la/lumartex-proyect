@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 
 import logo from "./assets/logo.svg";
-import menu from "./assets/menu.png";
+import menu from "./assets/menu.svg";
 import close from "./assets/close.svg";
 import search from "./assets/search.svg";
 import arrow from "./assets/right-arrow.svg";

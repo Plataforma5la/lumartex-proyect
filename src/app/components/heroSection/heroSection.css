@@ -6,7 +6,7 @@
     height: 618px;
     margin-top: 90px;
     position: relative;
-    background-size: contain;
+    background-size: 100% 100%;
     background-color: black;
     background-repeat: no-repeat;
     background-image: url("./assets/background-image.png");
@@ -42,6 +42,11 @@
     align-items: center;
     background: #6788ff;
     justify-content: center;
+  }
+  .heroArrow{
+    position: absolute;
+    right: 50%;
+    bottom: 30px
   }
 }
 /* Styles for mobile */
@@ -82,5 +87,10 @@
     color: #ffffff;
     margin-left: 24px;
     margin-top: 10px;
+  }
+
+  .heroArrow{
+    width: 7px;
+    margin-top: 24px;
   }
 }

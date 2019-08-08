@@ -1,0 +1,33 @@
+.ul {
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around
+}
+
+.dots {
+  width: 7px;
+  opacity: 1;
+  height: 7px;
+  font-size: 0px;
+  transition: 1s;
+  cursor: pointer;
+  margin-top: 18px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #ff062e;
+}
+
+.active {
+  width: 12px;
+  height: 3px;
+  outline: none;
+  font-size: 0px;
+  transition: 1s;
+  cursor: pointer;
+  margin: -5px 0px;
+  margin-right: 13px;
+  border-radius: 4px;
+  display: inline-block;
+  background: #ff062e;
+}
