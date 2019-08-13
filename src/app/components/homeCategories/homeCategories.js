@@ -14,9 +14,11 @@ export default class HomeCategories extends React.Component {
     };
   }
   componentDidMount() {
-    Axios.get("http://10.100.0.55:8080/api/categories")
+    Axios.get("http://10.100.0.55:8080/api/categories?q=")
       .then(res => res.data)
-      .then(categories => this.setState({ categories }));
+      .then(categories => {
+        this.setState({ categories });
+      });
   }
   render() {
     const { categories } = this.state;
@@ -24,12 +26,12 @@ export default class HomeCategories extends React.Component {
       categories &&
       categories.map(category => (
         <div className="categoryCard" key={category._id}>
-          <div className="categoryTitle"> {category.description} </div>
+          <div className="categoryTitle"> {category._source.description} </div>
           <Link to="/categories">
             <div className="categoryLink">View All →</div>
           </Link>
           <img
-            src={require(`./assets/mobile-${category.image}`)}
+            src={require(`./assets/mobile-${category._source.image}`)}
             alt="img"
             className="categoryImage"
           />
@@ -41,11 +43,10 @@ export default class HomeCategories extends React.Component {
         {window.innerWidth < 768 ? (
           <div className="sliderContainer">
             <div className="titleMobile">our products</div>
-            {console.log("holaaa", components)}
             <AliceCarousel
               mouseDragEnabled
               items={components}
-              duration="500"
+              duration={200}
               infinite={false}
               buttonsDisabled
             ></AliceCarousel>
@@ -55,12 +56,12 @@ export default class HomeCategories extends React.Component {
             {categories &&
               categories.map(category => (
                 <div className="categoryCard" key={category._id}>
-                  <div className="categoryTitle"> {category.description} </div>
+                  <div className="categoryTitle"> {category._source.description} </div>
                   <Link to="/categories">
                     <div className="categoryLink">View All →</div>
                   </Link>
                   <img
-                    src={require(`./assets/${category.image}`)}
+                    src={require(`./assets/${category._source.image}`)}
                     alt="img"
                     className="categoryImage"
                   />

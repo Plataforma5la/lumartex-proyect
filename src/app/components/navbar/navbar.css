@@ -39,6 +39,7 @@
     font-size: 16px;
     line-height: 19px;
     padding-left: 25px;
+    text-transform: uppercase;
     border-radius: 4px;
     background: rgba(232, 232, 232, 0.55);
   }
@@ -112,6 +113,7 @@
     z-index: 60;
     flex-direction: column;
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.61);
+    outline: none;
   }
 
   .navbarSection {
@@ -127,23 +129,38 @@
     text-transform: uppercase;
     background-color: #6788ff;
     justify-content: space-between;
+    outline: none;
   }
 
   .navbarSection:active {
-    opacity: 0.5;
+    background-color: rgb(144, 168, 255);
+    outline: none;
   }
 
   .navbarSearch input {
     display: none;
   }
 
+  .navbarSearchMobile input {
+    width: 100%;
+    height: 60px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    line-height: 19px;
+    padding-left: 55px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    background: rgba(232, 232, 232, 0.55);
+  }
+
   .navbar input::placeholder {
     display: none;
   }
 
-  .navbarSearch {
-    margin-left: 25px;
+  .navbarSearchMobile {
     position: relative;
+    text-transform: uppercase;
   }
 
   .navbarLogo {
@@ -152,9 +169,14 @@
     width: 100px;
     position: absolute;
   }
-
   .search {
     display: none;
+  }
+  .searchActive {
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    position: absolute;
   }
 
   .searchMobile {
@@ -181,8 +203,20 @@
     height: 19px;
     position: absolute;
   }
-
-  .dividerInput {
-    display: none;
+  .dividerInput{
+    display: none
+  }
+  .dividerInputMobile {
+    top: 13px;
+    right: 55px;
+    height: 34px;
+    position: absolute;
+    border: 0.5px solid rgba(55, 55, 55, 0.28);
+  }
+  .prev {
+    position: absolute;
+    top:25px;
+    left: 20px;
+    
   }
 }

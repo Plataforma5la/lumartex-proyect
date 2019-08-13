@@ -19,7 +19,7 @@ describe('async actions to load config.json', () => {
 
     const expectedActions = [
       { type: actions.FETCH_CONFIG_BEGIN },
-      { type: actions.FETCH_CONFIG_SUCCESS, payload: { config: ['do something1'] } }
+      { type: actions.FETCH_CONFIG_SUCCESS, payload: { config: ['do something'] } }
     ]
 
     const store = mockStore({ config: [] })
