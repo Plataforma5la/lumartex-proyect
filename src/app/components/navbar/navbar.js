@@ -33,7 +33,7 @@ export default class Navbar extends React.Component {
   }
   handleSearch(e) {
     e.preventDefault();
-    this.setState(({ openSearch }) => ({ openSearch: !openSearch }));
+    this.setState(({ openSearch, openMenu }) => ({ openSearch: !openSearch, openMenu: false }));
   }
   handleMenu(e) {
     e.preventDefault();
@@ -84,13 +84,15 @@ export default class Navbar extends React.Component {
         <div className="navbarSearch">
           <div className="dividerInput" />
           <img src={search} alt="search" className="search" />
-          <input
-            type="text"
-            placeholder="VM-HL28"
-            onChange={this.handleChange}
-            onClick={this.handleSearch}
-          />
-          {openSearch ? <Dropdown products={products} /> : null}
+          <div>
+            <input
+              type="text"
+              placeholder="VM-HL28"
+              onChange={this.handleChange}
+              // onClick={this.handleSearch}
+            />
+            {openSearch ? <Dropdown products={products} /> : null}
+          </div>
         </div>
         {width < 768 ? (
           <div>
