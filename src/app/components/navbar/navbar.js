@@ -33,7 +33,7 @@ export default class Navbar extends React.Component {
   }
   handleSearch(e) {
     e.preventDefault();
-    this.setState(({ openSearch, openMenu }) => ({ openSearch: !openSearch, openMenu: false }));
+    this.setState(({ openSearch }) => ({ openSearch: !openSearch, openMenu: false }));
   }
   handleMenu(e) {
     e.preventDefault();
@@ -44,7 +44,7 @@ export default class Navbar extends React.Component {
     if (e.target.value === "")
       this.setState({ products: { name: [], partNumber: [] } });
     else {
-      Axios.get(`http://10.100.0.55:8080/api/products?q=${e.target.value}`)
+      Axios.get(`http://localhost:8080/api/products?q=${e.target.value}`)
         .then(res => res.data)
         .then(products => {
           this.setState({ products });
@@ -54,6 +54,7 @@ export default class Navbar extends React.Component {
   render() {
     const width = window.innerWidth;
     const { openMenu, products, openSearch } = this.state;
+    console.log(this.state)
     return (
       <div className="navbarContainer">
         {openSearch ? null : (
@@ -91,7 +92,7 @@ export default class Navbar extends React.Component {
               onChange={this.handleChange}
               // onClick={this.handleSearch}
             />
-            {openSearch ? <Dropdown products={products} /> : null}
+            <Dropdown products={products} />
           </div>
         </div>
         {width < 768 ? (

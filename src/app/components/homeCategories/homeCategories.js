@@ -14,7 +14,7 @@ export default class HomeCategories extends React.Component {
     };
   }
   componentDidMount() {
-    Axios.get("http://10.100.0.55:8080/api/categories?q=")
+    Axios.get("http://localhost:8080/api/categories?q=")
       .then(res => res.data)
       .then(categories => {
         this.setState({ categories });
