@@ -1,0 +1,192 @@
+/* Styles for desktop */
+
+@media (min-width: 768px) {
+  .supportContainer {
+    margin: 0 auto;
+    margin-top: 115px;
+    width: 83.5%;
+    margin-bottom: 117px;
+  }
+
+  .supportTitle {
+    margin-top: 15;
+    font-size: 33px;
+    line-height: 41px;
+    color: #000000;
+    position: relative;
+    text-transform: uppercase;
+    text-align: start;
+    letter-spacing: -3px;
+    font-weight: 300;
+  }
+
+  .supportTitle .supportFilter {
+    position: absolute;
+    right: 3px;
+    bottom: 10px;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6788ff;
+    cursor: pointer;
+  }
+
+  .supportTitle .supportFilter:hover {
+    border-bottom: solid 1px #6788ff;
+  }
+
+  .supportArrowDown {
+    margin-right: 2px;
+  }
+
+  .supportGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    grid-gap: 24px;
+    margin-top: 29px;
+    padding: 0px 1px;
+  }
+
+  .supportCatalogueImage {
+    width: 384px;
+    height: 186px;
+  }
+
+  .supportCatalogue {
+    width: 384px;
+    height: 303px;
+    box-shadow: 0px 0px 20px rgba(31, 32, 65, 0.05);
+    border-radius: 8px;
+  }
+
+  .supportCatalogeName {
+    font-size: 20px;
+    line-height: 29px;
+    font-weight: 300;
+    color: #3f3f3f;
+    text-align: start;
+    margin-left: 32px;
+    margin-top: 24px;
+    letter-spacing: -0.3px;
+  }
+
+  .supportContainer2 {
+    padding: 0px 32px;
+    margin-top: 13px;
+  }
+  .supportCatalogeDate {
+    font-size: 10px;
+    line-height: 148.5%;
+    color: #3f3f3f;
+    float: left;
+  }
+  .supportDate {
+    margin-left: 7.5px;
+    float: right;
+    margin-bottom: 2px;
+  }
+  .supportCatalogeDownload {
+    float: right;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6788ff;
+    text-decoration: none;
+  }
+  .supportCatalogeDownload:hover {
+    border-bottom: 1px solid #6788ff;
+  }
+}
+/* Styles for mobile */
+
+@media (max-width: 768px) {
+  .supportContainer {
+    display: grid;
+    width: 87%;
+    margin: 0 auto;
+    margin-bottom: 70px;
+  }
+
+  .supportTitle {
+    font-size: 23px;
+    line-height: 29px;
+    color: #000000;
+    text-transform: uppercase;
+    text-align: start;
+    letter-spacing: -1px;
+  }
+
+  .supportTitle .supportFilter {
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6788ff;
+    margin-top: 15px;
+  }
+
+  .supportArrowDown {
+    margin-left: 2px;
+  }
+
+  .supportGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-gap: 24px;
+    margin-top: 29px;
+    padding: 0px 1px;
+  }
+
+  .supportCatalogueImage {
+    width: 100%;
+    height: 130.75px;
+  }
+
+  .supportCatalogue {
+    width: 100%;
+    height: 213px;
+    box-shadow: 0px 0px 20px rgba(31, 32, 65, 0.05);
+    border-radius: 8px;
+  }
+
+  .supportCatalogeName {
+    font-size: 17px;
+    line-height: 29px;
+    font-weight: 300;
+    color: #3f3f3f;
+    text-align: start;
+    margin-left: 20px;
+    margin-top: 13px;
+    letter-spacing: -0.3px;
+  }
+  .supportContainer2 {
+    padding: 0px 20px;
+    margin-top: 10px;
+  }
+  .supportCatalogeDate {
+    font-size: 8px;
+    color: #3f3f3f;
+    float: left;
+  }
+  .supportDate {
+    margin-left: 7.5px;
+    float: right;
+    margin-bottom: 2px;
+  }
+  .supportCatalogeDownload {
+    float: right;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6788ff;
+    text-decoration: none;
+  }
+  .supportCatalogeDownload:hover {
+    border-bottom: 1px solid #6788ff;
+  }
+}
