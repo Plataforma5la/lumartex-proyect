@@ -1,0 +1,35 @@
+.pathContainer {
+  border: 1px solid #3f69ff;
+  box-sizing: border-box;
+  border-radius: 40px;
+  padding: 8.5px 21.5px;
+  float: left;
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  text-align: start;
+  outline: none;
+  user-select: none;
+  margin-bottom: 26px;
+}
+
+.pathName {
+  float: left;
+  user-select: none;
+}
+
+.pathClose {
+  float: right;
+  margin-left: 45px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.noneProducts {
+  font-size: 22px;
+  text-align: start;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}

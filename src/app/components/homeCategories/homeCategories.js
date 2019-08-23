@@ -27,7 +27,7 @@ export default class HomeCategories extends React.Component {
       categories.map(category => (
         <div className="categoryCard" key={category._id}>
           <div className="categoryTitle"> {category._source.description} </div>
-          <Link to="/categories">
+          <Link to={`/products?${category._source.description}`}>
             <div className="categoryLink">View All →</div>
           </Link>
           <img
@@ -56,8 +56,11 @@ export default class HomeCategories extends React.Component {
             {categories &&
               categories.map(category => (
                 <div className="categoryCard" key={category._id}>
-                  <div className="categoryTitle"> {category._source.description} </div>
-                  <Link to="/categories">
+                  <div className="categoryTitle">
+                    {" "}
+                    {category._source.description}{" "}
+                  </div>
+                  <Link to={`/products?${category._source.description}`}>
                     <div className="categoryLink">View All →</div>
                   </Link>
                   <img

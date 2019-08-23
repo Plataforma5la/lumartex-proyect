@@ -1,0 +1,12 @@
+.childrenTitle {
+  font-size: 13px;
+  line-height: 170%;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  color: #000000;
+}
+
+.categoriesWhitTitleContainer {
+  margin-bottom: 15px;
+}
