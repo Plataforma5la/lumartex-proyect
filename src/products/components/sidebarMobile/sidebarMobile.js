@@ -202,8 +202,8 @@ export default class Sidebar extends React.Component {
   render() {
     const { history, search, handleOpen } = this.props;
     return (
-      <div className="sidebarContainer">
-        <div className="sidebarTitle">Products</div>
+      <div className="sidebarMobileContainer">
+        <div className="sidebarMobileTitle">Products</div>
         {this.state.categories.map((categorie, i) => {
           return (
             <Categorie

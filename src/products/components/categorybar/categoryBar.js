@@ -8,7 +8,6 @@ export default class CategoryBar extends React.Component {
   handleClick(search, categorie, history) {
     const path = decodeURI(search)
     const newPath = path.slice(0, path.indexOf(categorie)-1);
-    console.log(newPath)
     history.push(`/products${newPath}`);
   }
   render() {
