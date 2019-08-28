@@ -29,7 +29,6 @@ const defaultSettings = {
 
 export default ({ components, settings }) => (
   <div>
-    {console.log(components)}
     <Slider {...{ ...defaultSettings, ...settings }}>
       {components && components}
     </Slider>

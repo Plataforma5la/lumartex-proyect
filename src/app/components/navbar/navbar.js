@@ -31,9 +31,19 @@ export default class Navbar extends React.Component {
   componentDidMount() {
     if (window.innerWidth >= 768) this.setState({ openMenu: true });
   }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.page !== this.props.page && window.innerWidth <= 768) {
+      this.setState({ openMenu: false });
+    }
+  }
+
   handleSearch(e) {
     e.preventDefault();
-    this.setState(({ openSearch }) => ({ openSearch: !openSearch, openMenu: false }));
+    this.setState(({ openSearch }) => ({
+      openSearch: !openSearch,
+      openMenu: false
+    }));
   }
   handleMenu(e) {
     e.preventDefault();
@@ -54,7 +64,7 @@ export default class Navbar extends React.Component {
   render() {
     const width = window.innerWidth;
     const { openMenu, products, openSearch } = this.state;
-    console.log(this.state)
+    const { page } = this.props;
     return (
       <div className="navbarContainer">
         {openSearch ? null : (
@@ -64,19 +74,45 @@ export default class Navbar extends React.Component {
         )}
         {openMenu ? (
           <div className="navbarSections">
-            <Link className="navbarSection" to="/about" id="navbarAbout">
+            <Link
+              className={
+                page === "/about" ? "navbarSectionActive" : "navbarSection"
+              }
+              to="/about"
+              id="navbarAbout"
+            >
               about us
               <img src={arrow} alt="arrow" className="arrow" />
             </Link>
-            <Link className="navbarSection" to="/products" id="navbarProducts">
+            <Link
+              className={
+                page.includes("/products")
+                  ? "navbarSectionActive"
+                  : "navbarSection"
+              }
+              to="/products"
+              id="navbarProducts"
+            >
               products
               <img src={arrow} alt="arrow" className="arrow" />
             </Link>
-            <Link className="navbarSection" to="/support" id="navbarSupport">
+            <Link
+              className={
+                page === "/support" ? "navbarSectionActive" : "navbarSection"
+              }
+              to="/support"
+              id="navbarSupport"
+            >
               support
               <img src={arrow} alt="arrow" className="arrow" />
             </Link>
-            <Link className="navbarSection" to="/contact" id="navbarContact">
+            <Link
+              className={
+                page === "/contact" ? "navbarSectionActive" : "navbarSection"
+              }
+              to="/contact"
+              id="navbarContact"
+            >
               contact
               <img src={arrow} alt="arrow" className="arrow" />
             </Link>

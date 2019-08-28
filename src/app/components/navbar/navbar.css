@@ -26,6 +26,18 @@
     text-decoration: none;
     text-transform: uppercase;
   }
+  .navbarSectionActive {
+    cursor: pointer;
+    font-size: 14px;
+    color: #000000;
+    font-weight: 200;
+    line-height: 19px;
+    margin-right: 55px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid #6788ff;
+  }
 
   .navbarSection:hover {
     border-bottom: 1px solid #6788ff;
@@ -116,7 +128,7 @@
     outline: none;
   }
 
-  .navbarSection {
+  .navbarSection, .navbarSectionActive {
     height: 60px;
     border: none;
     display: flex;
@@ -203,8 +215,8 @@
     height: 19px;
     position: absolute;
   }
-  .dividerInput{
-    display: none
+  .dividerInput {
+    display: none;
   }
   .dividerInputMobile {
     top: 13px;
@@ -215,8 +227,7 @@
   }
   .prev {
     position: absolute;
-    top:25px;
+    top: 25px;
     left: 20px;
-    
   }
 }

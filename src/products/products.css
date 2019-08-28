@@ -1,0 +1,35 @@
+/* Styles for desktop */
+
+@media (min-width: 768px) {
+  .productsContainer {
+    display: grid;
+    grid-template-columns: 284px 1fr;
+    grid-gap: 18px;
+    width: 82.6%;
+    margin: 0 auto;
+    margin-top: 95px;
+    margin-bottom: 67px;
+  }
+  .productsDivider {
+    width: 100%;
+    float: left;
+    height: 0px;
+    border: 0.5px solid rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Styles for mobile */
+
+@media (max-width: 768px) {
+  .productsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .productsDivider {
+    width: 90%;
+    margin: 0 auto;
+    height: 0px;
+    border: 0.5px solid rgba(0, 0, 0, 0.5);
+    float: inherit;
+  }
+}

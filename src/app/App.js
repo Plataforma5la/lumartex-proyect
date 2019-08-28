@@ -6,7 +6,10 @@ import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import HeroSection from "./components/heroSection/heroSection";
 import HomeCategories from "./components/homeCategories/homeCategories";
-import About from "./about/about";
+import About from "../about/about";
+import Contact from "../contacts/contact";
+import Support from "../support/support";
+import Products from "../products/products";
 class App extends React.Component {
   componentDidMount() {
     const { fetchConfiguration } = this.props;
@@ -16,12 +19,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <Route render={({ location }) => <Navbar page={location.pathname} />} />
         <Switch>
           <Route
             exact
             path="/"
-            render={() => (
+            render={props => (
               <div>
                 <HeroSection />
                 <HomeCategories />
@@ -29,6 +32,15 @@ class App extends React.Component {
             )}
           />
           <Route exact path="/about" render={() => <About />} />
+          <Route exact path="/contact" render={() => <Contact />} />
+          <Route exact path="/support" render={() => <Support />} />
+          <Route
+            exact
+            path="/products"
+            render={({ location, history }) => (
+              <Products search={location.search} history={history} />
+            )}
+          />
         </Switch>
         <Footer />
       </div>
