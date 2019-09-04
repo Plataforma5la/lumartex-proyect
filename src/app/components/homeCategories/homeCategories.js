@@ -14,7 +14,9 @@ export default class HomeCategories extends React.Component {
     };
   }
   componentDidMount() {
-    Axios.get("http://localhost:8080/api/categories?q=")
+    Axios.get(
+      "http://ec2-52-87-131-15.compute-1.amazonaws.com:8080/api/categories?q="
+    )
       .then(res => res.data)
       .then(categories => {
         this.setState({ categories });
@@ -26,12 +28,14 @@ export default class HomeCategories extends React.Component {
       categories &&
       categories.map(category => (
         <div className="categoryCard" key={category._id}>
-          <div className="categoryTitle"> {category._source.description} </div>
-          <Link to={`/products?${category._source.description}`}>
-            <div className="categoryLink">View All →</div>
-          </Link>
+          <div className="categoryTitle">
+            {category._source.description}
+            <Link to={`/products?${category._source.description}`}>
+              <div className="categoryLink">View All →</div>
+            </Link>
+          </div>
           <img
-            src={require(`./assets/mobile-${category._source.image}`)}
+            src={require(`./assets/mobile-${category._source.image}.png`)}
             alt="img"
             className="categoryImage"
           />
@@ -54,22 +58,23 @@ export default class HomeCategories extends React.Component {
         ) : (
           <div className="categoriesContent">
             {categories &&
-              categories.map(category => (
-                <div className="categoryCard" key={category._id}>
-                  <div className="categoryTitle">
-                    {" "}
-                    {category._source.description}{" "}
+              categories.map(category => {
+                return (
+                  <div className="categoryCard" key={category._id}>
+                    <div className="categoryTitle">
+                      {category._source.description}
+                      <Link to={`/products?${category._source.description}`}>
+                        <div className="categoryLink">View All →</div>
+                      </Link>
+                    </div>
+                    <img
+                      src={require(`./assets/${category._source.image}.png`)}
+                      alt="img"
+                      className="categoryImage"
+                    />
                   </div>
-                  <Link to={`/products?${category._source.description}`}>
-                    <div className="categoryLink">View All →</div>
-                  </Link>
-                  <img
-                    src={require(`./assets/${category._source.image}`)}
-                    alt="img"
-                    className="categoryImage"
-                  />
-                </div>
-              ))}
+                );
+              })}
           </div>
         )}
       </div>
