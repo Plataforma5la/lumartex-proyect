@@ -54,7 +54,7 @@ export default class Navbar extends React.Component {
     if (e.target.value === "")
       this.setState({ products: { name: [], partNumber: [] } });
     else {
-      Axios.get(`http://api:8080/api/products?q=${e.target.value}`)
+      Axios.get(`http://ec2-52-87-131-15.compute-1.amazonaws.com:8080/api/products?q=${e.target.value}`)
         .then(res => res.data)
         .then(products => {
           this.setState({ products });
