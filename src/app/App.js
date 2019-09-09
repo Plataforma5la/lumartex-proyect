@@ -10,6 +10,7 @@ import About from "../about/about";
 import Contact from "../contacts/contact";
 import Support from "../support/support";
 import Products from "../products/products";
+import SingleProduct from "../products/components/singleProduct/singleProduct";
 class App extends React.Component {
   componentDidMount() {
     const { fetchConfiguration } = this.props;
@@ -39,6 +40,16 @@ class App extends React.Component {
             path="/products"
             render={({ location, history }) => (
               <Products search={location.search} history={history} />
+            )}
+          />
+          <Route
+            exact
+            path="/products/:id/:categorie"
+            render={({ match }) => (
+              <SingleProduct
+                id={match.params.id}
+                categorie={match.params.categorie}
+              />
             )}
           />
         </Switch>

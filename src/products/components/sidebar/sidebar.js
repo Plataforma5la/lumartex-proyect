@@ -50,8 +50,8 @@ export default class Sidebar extends React.Component {
           categories: [{ type: "selectionable categorie", name: "IPAD" }]
         },
         {
-          name: "TV Mounts",
-          url:"TV Mounts",
+          name: "Tv Mounts",
+          url:"Tv Mounts",
           categories: [
             {
               name: "Fixed Mount",
@@ -143,8 +143,8 @@ export default class Sidebar extends React.Component {
           ]
         },
         {
-          name: "TV Carts/Stands",
-          url:"TV Carts/Stands",
+          name: "Tv Carts/Stands",
+          url:"Tv Carts/Stands",
           categories: [
             { type: "selectionable categorie", name: "Non-Motorized TV Cart" },
             { type: "selectionable categorie", name: "Motorized TV Carts" },
