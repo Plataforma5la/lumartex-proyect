@@ -39,8 +39,9 @@
     border-bottom: 1px solid #6788ff;
   }
 
-  .navbarSection:hover {
+  .navbarSection:hover, .navbarSectionActive:hover  {
     border-bottom: 1px solid #6788ff;
+    text-decoration: none;
   }
 
   .navbarSearch input {
@@ -128,7 +129,8 @@
     outline: none;
   }
 
-  .navbarSection, .navbarSectionActive {
+  .navbarSection,
+  .navbarSectionActive {
     height: 60px;
     border: none;
     display: flex;

@@ -50,12 +50,12 @@ export default class Sidebar extends React.Component {
           categories: [{ type: "selectionable categorie", name: "IPAD" }]
         },
         {
-          name: "TV Mounts",
-          url:"TV Mounts",
+          name: "Tv Mounts",
+          url:"Tv Mounts",
           categories: [
             {
               name: "Fixed Mount",
-              url:"TV Mounts;Fixed Mount",
+              url:"Tv Mounts;Fixed Mount",
               type: "categorie",
               categories: [
                 {
@@ -84,7 +84,7 @@ export default class Sidebar extends React.Component {
             },
             {
               name: "Tilt Mount",
-              url:"TV Mounts;Tilt Mount",
+              url:"Tv Mounts;Tilt Mount",
               type: "categorie",
               categories: [
                 {
@@ -113,7 +113,7 @@ export default class Sidebar extends React.Component {
             },
             {
               name: "Full Motion Mount",
-              url:"TV Mounts;Full Motion Mount",
+              url:"Tv Mounts;Full Motion Mount",
               type: "categorie",
               categories: [
                 {
@@ -143,8 +143,8 @@ export default class Sidebar extends React.Component {
           ]
         },
         {
-          name: "TV Carts/Stands",
-          url:"TV Carts/Stands",
+          name: "Tv Carts/Stands",
+          url:"Tv Carts/Stands",
           categories: [
             { type: "selectionable categorie", name: "Non-Motorized TV Cart" },
             { type: "selectionable categorie", name: "Motorized TV Carts" },
