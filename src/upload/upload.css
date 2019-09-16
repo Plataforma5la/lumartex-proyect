@@ -1,0 +1,10 @@
+.uploadContainer{
+  margin-top: 90px;
+}
+
+.formUpload{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+}

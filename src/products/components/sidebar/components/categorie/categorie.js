@@ -78,7 +78,7 @@ export default class Categorie extends React.Component {
     e.preventDefault();
     if (this.state.open) {
       const path = decodeURI(search);
-      const newPath = path.slice(0, path.indexOf(categorie.name)-1);
+      const newPath = path.slice(0, path.indexOf(categorie.name) - 1);
       history.push(`/products${newPath}`);
       this.setState({ open: false });
     } else {

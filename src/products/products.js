@@ -18,22 +18,28 @@ export default class Products extends React.Component {
     };
     this.handleOpen = this.handleOpen.bind(this);
   }
+
   handleOpen() {
     this.setState(({ open }) => ({ open: !open }));
   }
+
   componentDidMount() {
+    console.log("me monte");
     if (this.props.search) {
+      const categories = decodeURI(this.props.search.slice(1).split(";"));
       Axios.post("http://localhost:8080/api/products/categorie", {
-        categories: this.props.search.slice(1).split(";")
+        categories
       })
         .then(res => res.data)
         .then(products => this.setState({ products }));
     }
   }
+
   componentDidUpdate(prevProps) {
+    const categories = decodeURI(this.props.search.slice(1).split(";"));
     if (prevProps.search !== this.props.search) {
       Axios.post("http://localhost:8080/api/products/categorie", {
-        categories: this.props.search.slice(1).split(";")
+        categories
       })
         .then(res => res.data)
         .then(products => this.setState({ products }));
@@ -42,6 +48,7 @@ export default class Products extends React.Component {
   render() {
     const { search, history } = this.props;
     const { open, products } = this.state;
+    console.log("Todos los productos", products);
     return (
       <div className="productsContainer">
         {window.innerWidth < 768 ? (
@@ -66,7 +73,7 @@ export default class Products extends React.Component {
           ) : null}
           <CategoryBar path={search && decodeURI(search)} history={history} />
           <div className="productsDivider" />
-          <GridProducts products={products} search={search}/>
+          <GridProducts products={products} search={search} />
         </div>
       </div>
     );

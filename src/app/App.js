@@ -11,6 +11,7 @@ import Contact from "../contacts/contact";
 import Support from "../support/support";
 import Products from "../products/products";
 import SingleProduct from "../products/components/singleProduct/singleProduct";
+import Upload from "../upload/upload";
 class App extends React.Component {
   componentDidMount() {
     const { fetchConfiguration } = this.props;
@@ -35,6 +36,7 @@ class App extends React.Component {
           <Route exact path="/about" render={() => <About />} />
           <Route exact path="/contact" render={() => <Contact />} />
           <Route exact path="/support" render={() => <Support />} />
+          <Route exact path="/upload" render={() => <Upload />} />
           <Route
             exact
             path="/products"
