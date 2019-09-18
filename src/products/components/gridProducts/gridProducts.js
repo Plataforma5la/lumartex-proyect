@@ -29,8 +29,11 @@ export default class GridProducts extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { actualIndex, totalIndex } = this.state;
+    let numOfProducts = window.innerWidth < 768 ? 8 : 9;
     if (prevProps.products.length !== this.props.products.length) {
-      this.setState({ totalIndex: Math.ceil(this.props.products.length / 9) });
+      this.setState({
+        totalIndex: Math.ceil(this.props.products.length / numOfProducts)
+      });
     }
     if (
       prevState.totalIndex !== totalIndex ||
@@ -38,10 +41,13 @@ export default class GridProducts extends React.Component {
     ) {
       let initIndex = 0;
       if (actualIndex !== 1) {
-        initIndex = actualIndex * 9 - 9;
+        initIndex = actualIndex * numOfProducts - numOfProducts;
       }
       this.setState({
-        productsToShow: this.props.products.slice(initIndex, actualIndex * 9)
+        productsToShow: this.props.products.slice(
+          initIndex,
+          actualIndex * numOfProducts
+        )
       });
     }
   }
@@ -76,17 +82,17 @@ export default class GridProducts extends React.Component {
   };
   handleClick = (e, actualIndex) => {
     e.preventDefault();
-    console.log("intente cambiar", actualIndex);
     this.setState({ actualIndex });
   };
 
   render() {
-    const { search } = this.props;
+    const { search, products } = this.props;
     const { productsToShow, totalIndex } = this.state;
     return (
       <div>
         <div className="gridProductsContainer">
-          {productsToShow &&
+          {products &&
+            productsToShow &&
             productsToShow.map(product => (
               <div className="product" key={product._id}>
                 <img src={image} alt="" className="productImage" />

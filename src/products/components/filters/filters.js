@@ -29,7 +29,9 @@ export default class Filters extends React.Component {
     return (
       <div className="filtersContainer">
         <div className="handlerFilters">
-          <div className="filterTitle">Filters</div>
+          <div className="filterTitle" onClick={this.handleOpenLocal}>
+            Filters
+          </div>
           <img
             alt=""
             src={open ? close : filterIcon}

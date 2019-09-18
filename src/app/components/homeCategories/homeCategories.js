@@ -2,26 +2,39 @@ import React from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
+import { connect } from "react-redux";
 
+import "react-alice-carousel/lib/alice-carousel.css";
 import "./homeCategories.css";
 
-export default class HomeCategories extends React.Component {
+class HomeCategories extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       categories: []
     };
   }
+
   componentDidMount() {
-    Axios.get(
-      "http://ec2-52-87-131-15.compute-1.amazonaws.com:8080/api/categories?q="
-    )
+    const { apiUrl } = this.props;
+    apiUrl && this.getCategories(apiUrl);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { apiUrl } = this.props;
+    if (prevProps.apiUrl !== apiUrl) {
+      this.getCategories(apiUrl);
+    }
+  }
+
+  getCategories = apiUrl => {
+    Axios.get(`${apiUrl}/api/categories?q=`)
       .then(res => res.data)
       .then(categories => {
         this.setState({ categories });
       });
-  }
+  };
+
   render() {
     const { categories } = this.state;
     const components =
@@ -35,7 +48,7 @@ export default class HomeCategories extends React.Component {
             </Link>
           </div>
           <img
-            src={require(`./assets/mobile-${category._source.image}.png`)}
+            // src={require(`./assets/mobile-${category._source.image}`)}
             alt="img"
             className="categoryImage"
           />
@@ -56,28 +69,19 @@ export default class HomeCategories extends React.Component {
             ></AliceCarousel>
           </div>
         ) : (
-          <div className="categoriesContent">
-            {categories &&
-              categories.map(category => {
-                return (
-                  <div className="categoryCard" key={category._id}>
-                    <div className="categoryTitle">
-                      {category._source.description}
-                      <Link to={`/products?${category._source.description}`}>
-                        <div className="categoryLink">View All →</div>
-                      </Link>
-                    </div>
-                    <img
-                      src={require(`./assets/${category._source.image}.png`)}
-                      alt="img"
-                      className="categoryImage"
-                    />
-                  </div>
-                );
-              })}
-          </div>
+          <div className="categoriesContent">{components}</div>
         )}
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    apiUrl: state.configReducer.config.apiUrl
+  };
+};
+export default connect(
+  mapStateToProps,
+  null
+)(HomeCategories);
