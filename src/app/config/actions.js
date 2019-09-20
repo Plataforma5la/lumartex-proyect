@@ -1,6 +1,6 @@
-export const FETCH_CONFIG_BEGIN   = 'FETCH_CONFIG_BEGIN';
-export const FETCH_CONFIG_SUCCESS = 'FETCH_CONFIG_SUCCESS';
-export const FETCH_CONFIG_FAILURE = 'FETCH_CONFIG_FAILURE';
+export const FETCH_CONFIG_BEGIN = "FETCH_CONFIG_BEGIN";
+export const FETCH_CONFIG_SUCCESS = "FETCH_CONFIG_SUCCESS";
+export const FETCH_CONFIG_FAILURE = "FETCH_CONFIG_FAILURE";
 
 export const fetchConfigBegin = () => ({
   type: FETCH_CONFIG_BEGIN
@@ -18,9 +18,13 @@ export const fetchConfigFailure = error => ({
 
 export function fetchConfig() {
   return dispatch => {
-    dispatch(fetchConfigBegin())
-    return fetch('config.json')
-    .then(result => result.json())
-    .then(config => dispatch(fetchConfigSuccess(config)))
-    .catch(error => dispatch(fetchConfigFailure(error)))
-}};
+    dispatch(fetchConfigBegin());
+    return fetch("/config.json")
+      .then(result => result.json())
+      .then(config => {
+        console.log(config);
+        dispatch(fetchConfigSuccess(config));
+      })
+      .catch(error => dispatch(fetchConfigFailure(error)));
+  };
+}

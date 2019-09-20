@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { connect } from "react-redux";
 import "./gridProducts.css";
 
-import image from "./assets/lala.png";
 import arrow from "./assets/arrow.svg";
-export default class GridProducts extends React.Component {
+class GridProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -95,11 +94,14 @@ export default class GridProducts extends React.Component {
             productsToShow &&
             productsToShow.map(product => (
               <div className="product" key={product._id}>
-                <img src={image} alt="" className="productImage" />
-                <div className="productName">{product.name}</div>
-                <div className="productDescription">
-                  Laptop stand and monitor mounts
-                </div>
+                <img
+                  src={`${this.props.apiUrl + product.images[0]}`}
+                  alt=""
+                  className="productImage"
+                />
+
+                <div className="productName">{product.partNumber}</div>
+                <div className="productDescription">{product.name}</div>
                 <Link
                   to={`/products/${product._id}/${
                     search.slice(1).split(";")[0]
@@ -132,3 +134,13 @@ export default class GridProducts extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    apiUrl: state.configReducer.config.apiUrl
+  };
+};
+export default connect(
+  mapStateToProps,
+  null
+)(GridProducts);
