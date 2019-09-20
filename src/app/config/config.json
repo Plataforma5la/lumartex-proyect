@@ -1,6 +1,6 @@
 {
   "applicationName": "react template",
-  "apiUrl": "http://10.100.0.19:8080",
+  "apiUrl": "http://api",
   "categories": [{
       "name": "Monitor Arms",
       "url": "Monitor Arms",
