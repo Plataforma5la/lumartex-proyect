@@ -49,7 +49,7 @@ class Products extends React.Component {
       .then(res => res.data)
       .then(products => this.setState({ products }));
   };
-  
+
   render() {
     const { search, history } = this.props;
     const { open, products } = this.state;

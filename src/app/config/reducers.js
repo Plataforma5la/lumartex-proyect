@@ -2,16 +2,16 @@ import {
   FETCH_CONFIG_BEGIN,
   FETCH_CONFIG_SUCCESS,
   FETCH_CONFIG_FAILURE
-} from './actions';
+} from "./actions";
 
 const initialState = {
-  config: [],
+  config: {},
   loading: false,
   error: null
 };
 
 export default function configReducer(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case FETCH_CONFIG_BEGIN:
       // Mark the state as "loading" so we can show a spinner or something
       // Also, reset any errors. We're starting fresh.

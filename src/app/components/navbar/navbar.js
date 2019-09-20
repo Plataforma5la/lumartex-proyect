@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import { connect } from "react-redux";
 
 import "./navbar.css";
 
@@ -12,7 +13,7 @@ import search from "./assets/search.svg";
 import arrow from "./assets/right-arrow.svg";
 import prev from "./assets/prev.svg";
 
-export default class Navbar extends React.Component {
+class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,22 +46,25 @@ export default class Navbar extends React.Component {
       openMenu: false
     }));
   }
+
   handleMenu(e) {
     e.preventDefault();
     this.setState(({ openMenu }) => ({ openMenu: !openMenu }));
   }
+
   handleChange(e) {
     e.preventDefault();
     if (e.target.value === "")
       this.setState({ products: { name: [], partNumber: [] } });
     else {
-      Axios.get(`http://ec2-52-87-131-15.compute-1.amazonaws.com:8080/api/products?q=${e.target.value}`)
+      Axios.get(`${this.props.apiUrl}/api/products?q=${e.target.value}`)
         .then(res => res.data)
         .then(products => {
           this.setState({ products });
         });
     }
   }
+
   render() {
     const width = window.innerWidth;
     const { openMenu, products, openSearch } = this.state;
@@ -177,3 +181,13 @@ export default class Navbar extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    apiUrl: state.configReducer.config.apiUrl
+  };
+};
+export default connect(
+  mapStateToProps,
+  null
+)(Navbar);

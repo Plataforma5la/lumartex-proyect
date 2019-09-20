@@ -28,14 +28,18 @@ class SingleProduct extends React.Component {
   }
   componentDidMount() {
     const { apiUrl } = this.props;
-    Axios.get(`${apiUrl}/api/products/${this.props.id}`)
-      .then(res => res.data[0])
-      .then(product => this.setState({ product }));
+    console.log(apiUrl, "soy la url");
+    if (apiUrl) {
+      Axios.get(`${apiUrl}/api/products/${this.props.id}`)
+        .then(res => res.data[0])
+        .then(product => this.setState({ product }))
+        .catch(err => console.log(err));
+    }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { apiUrl } = this.props;
-    if (prevProps.id !== this.props.id) {
+    if (prevProps.id !== this.props.id || prevProps.apiUrl !== apiUrl) {
       Axios.get(`${apiUrl}/api/products/${this.props.id}`)
         .then(res => res.data[0])
         .then(product => this.setState({ product }));
@@ -64,13 +68,17 @@ class SingleProduct extends React.Component {
 
   render() {
     const { product, info } = this.state;
-    const { categorie } = this.props;
+    const { categorie, apiUrl } = this.props;
     const settings = {
       centerMode: false,
       customPaging: function(i) {
         return (
           <div className="dotsSliderContainer">
-            <img src={image} alt="" className="dotsSlider" />
+            <img
+              src={apiUrl + product.images[i]}
+              alt=""
+              className="dotsSlider"
+            />
           </div>
         );
       },
@@ -85,10 +93,8 @@ class SingleProduct extends React.Component {
     const components = [
       <div className="product" key={1}>
         <img src={image} alt="" className="productImage" />
-        <div className="productName">{product.name}</div>
-        <div className="productDescription">
-          Laptop stand and monitor mounts
-        </div>
+        <div className="productName">{product.partNumber}</div>
+        <div className="productDescription">{product.name}</div>
         <Link
           to={`/products/${product._id}/${categorie}`}
           className="productLink"
@@ -130,20 +136,25 @@ class SingleProduct extends React.Component {
             {categorie}
           </Link>
           <img className="spCategoriePathArrow" src={arrowRight} alt="" />
-          <div className="spCategoriePathName">{product.name}</div>
+          <div className="spCategoriePathName">{product.partNumber}</div>
         </div>
         <div className="singleProductPresentation">
           <div className="singleProductTitle">
-            <div className="singleProductName">{product.name}</div>
-            <div className="singleProductSubname">
-              Laptop stand and monitor mounts
-            </div>
+            <div className="singleProductName">{product.partNumber}</div>
+            <div className="singleProductSubname">{product.name}</div>
           </div>
           <div className="singleProductImages">
             <Slider {...settings} ref={c => (this.slider = c)}>
-              <img src={image} alt="" className="singleProdImage" />
-              <img src={image} alt="" className="singleProdImage" />
-              <img src={image} alt="" className="singleProdImage" />
+              {product.images &&
+                product.images.map(image => {
+                  return (
+                    <img
+                      src={this.props.apiUrl + image}
+                      alt=""
+                      className="singleProdImage"
+                    />
+                  );
+                })}
             </Slider>
             <div className="arrowsContainer">
               <img
