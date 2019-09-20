@@ -90,6 +90,16 @@ class Navbar extends React.Component {
             </Link>
             <Link
               className={
+                page === "/upload" ? "navbarSectionActive" : "navbarSection"
+              }
+              to="/upload"
+              id="navbarupload"
+            >
+              upload
+              <img src={arrow} alt="arrow" className="arrow" />
+            </Link>
+            <Link
+              className={
                 page.includes("/products")
                   ? "navbarSectionActive"
                   : "navbarSection"
