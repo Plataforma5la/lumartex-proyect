@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, StaticRouter } from "react-router-dom";
 import "./index.css";
 import App from "./app/AppContainer";
 import * as serviceWorker from "./serviceWorker";
@@ -12,9 +12,11 @@ let configManagerStore = configureStore();
 
 ReactDOM.render(
   <Provider store={configManagerStore}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <StaticRouter>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StaticRouter>
   </Provider>,
   document.getElementById("root")
 );
