@@ -22,7 +22,6 @@ export function fetchConfig() {
     return fetch("/config.json")
       .then(result => result.json())
       .then(config => {
-        console.log(config);
         dispatch(fetchConfigSuccess(config));
       })
       .catch(error => dispatch(fetchConfigFailure(error)));

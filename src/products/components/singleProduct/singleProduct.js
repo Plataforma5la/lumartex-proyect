@@ -28,7 +28,6 @@ class SingleProduct extends React.Component {
   }
   componentDidMount() {
     const { apiUrl } = this.props;
-    console.log(apiUrl, "soy la url");
     if (apiUrl) {
       Axios.get(`${apiUrl}/api/products/${this.props.id}`)
         .then(res => res.data[0])

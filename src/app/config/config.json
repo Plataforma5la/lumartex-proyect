@@ -1,6 +1,6 @@
 {
   "applicationName": "react template",
-  "apiUrl": "http://api",
+  "apiUrl": "http://ec2-3-226-109-26.compute-1.amazonaws.com:8080",
   "categories": [{
       "name": "Monitor Arms",
       "url": "Monitor Arms",
@@ -21,7 +21,7 @@
             },
             {
               "type": "selectionable categorie",
-              "name": "Quadtruple"
+              "name": "Quadruple"
             }
           ]
         },

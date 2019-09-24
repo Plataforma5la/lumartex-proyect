@@ -64,6 +64,7 @@
     bottom: 0%;
     z-index: 10;
     right: 0%;
+    object-fit: contain;
   }
 }
 /* Styles for mobile */
@@ -115,8 +116,10 @@
     color: #1e1e28;
     width: 60%;
     text-align: start;
-    padding-top: 20px;
-    margin-left: 20px;
+    top: 20px;
+    left: 20px;
+    position: absolute;
+    z-index: 45;
   }
 
   .categoryLink {
@@ -127,15 +130,16 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #6788ff;
-    margin-left: 20px;
     margin-top: 8px;
     outline: none;
   }
 
   .categoryImage {
     position: absolute;
-    bottom: 0%;
-    right: 0%;
+    bottom: 0;
+    right: 0;
+    object-fit: contain;
+    height: 272px;
   }
   .slider {
     background-color: red;
