@@ -48,7 +48,7 @@ class HomeCategories extends React.Component {
             </Link>
           </div>
           <img
-            // src={require(`./assets/mobile-${category._source.image}`)}
+            src={require(`./assets/${category._source.image}`)}
             alt="img"
             className="categoryImage"
           />

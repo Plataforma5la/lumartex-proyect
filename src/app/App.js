@@ -15,7 +15,6 @@ import Upload from "../upload/upload";
 class App extends React.Component {
   componentDidMount() {
     const { fetchConfiguration } = this.props;
-    console.log(fetchConfiguration, "sljkeghksjbrgkjb");
     fetchConfiguration();
   }
 

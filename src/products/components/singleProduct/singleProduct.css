@@ -25,11 +25,18 @@
   }
 
   .singleProductContainer ul.slick-dots li {
+    object-fit: contain;
     width: 80px;
+    height: 80px;
+    margin-top: 75px;
   }
 
   .dotsSlider {
     width: 80px;
+    margin: 0 auto;
+    height: 80px;
+    object-fit: contain;
+    margin-top: 50px;
   }
 
   .dotsSlider:hover {
@@ -212,6 +219,9 @@
 
   .dotsSlider {
     width: 50px;
+    margin: 0 auto;
+    height: 50px;
+    object-fit: contain;
   }
 
   .slick-active .dotsSlider {

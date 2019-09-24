@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import "./contact.css";
 import Axios from "axios";
 
@@ -56,7 +56,9 @@ export default class Contact extends React.Component {
               <div className="contactTitle">CONTACT US</div>
               <div className="contactInfo">
                 <div className="contactSubInfo">Address</div>
-                <div className="contactSubInfo">Telephone</div>
+                <Link to="/upload" className="contactSubInfo">
+                  Telephone
+                </Link>
                 <div className="contactSubInfo">Email</div>
               </div>
             </div>

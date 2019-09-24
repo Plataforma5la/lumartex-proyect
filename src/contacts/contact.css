@@ -39,7 +39,10 @@
   }
 
   .contactSubInfo {
+    color: black;
     margin-bottom: 30px;
+    display: block;
+    text-decoration: none;
   }
 
   .contactGridForm {
@@ -124,6 +127,8 @@
     line-height: 230%;
     color: #000000;
     text-align: start;
+    text-decoration: none;
+    display: block;
   }
   .contactGridForm {
     display: grid;

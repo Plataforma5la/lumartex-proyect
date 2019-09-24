@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import { connect } from "react-redux";
+
 import "./products.css";
 
 import CategoryBar from "./components/categorybar/categoryBar";
@@ -25,9 +26,7 @@ class Products extends React.Component {
 
   componentDidMount() {
     const { apiUrl } = this.props;
-    if (this.props.search) {
-      apiUrl && this.getProducts(apiUrl);
-    }
+    apiUrl && this.getProducts(apiUrl);
   }
 
   componentDidUpdate(prevProps) {
@@ -37,7 +36,7 @@ class Products extends React.Component {
       this.getProducts(apiUrl);
     }
     if (prevProps.search !== this.props.search) {
-      apiUrl && this.getProducts(apiUrl);
+      this.getProducts(apiUrl);
     }
   }
 
@@ -47,7 +46,9 @@ class Products extends React.Component {
       categories
     })
       .then(res => res.data)
-      .then(products => this.setState({ products }));
+      .then(products => {
+        this.setState({ products });
+      });
   };
 
   render() {

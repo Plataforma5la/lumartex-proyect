@@ -47,6 +47,7 @@
     margin-top: 16px;
     width: 80%;
     color: #303030;
+    height: 74px;
   }
 
   .productLink {
@@ -149,12 +150,14 @@
   .productDescription {
     font-size: 13px;
     line-height: 19px;
-    text-align: start;
     font-weight: 300;
+    width: 93%;
+    height: 45px;
+    word-break: break-all;
+    color: #303030;
+    text-align: start;
     padding-left: 8px;
     margin-top: 10px;
-    width: 93%;
-    color: #303030;
   }
 
   .productLink {

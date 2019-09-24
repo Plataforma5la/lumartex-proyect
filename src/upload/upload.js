@@ -77,7 +77,6 @@ class Upload extends React.Component {
   };
   render() {
     const { apiUrl } = this.props;
-    console.log(this.props);
     return (
       <form className="uploadContainer">
         <h1 className="uploadTitle">Upload product</h1>
