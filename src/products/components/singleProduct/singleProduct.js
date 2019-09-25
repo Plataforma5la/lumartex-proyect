@@ -131,8 +131,12 @@ class SingleProduct extends React.Component {
     return (
       <div className="singleProductContainer">
         <div className="singleProductPath">
-          <Link to={`/products?${categorie}`} className="spCategoriePath">
-            {categorie}
+          {console.log()}
+          <Link
+            to={`/products?${decodeURI(categorie)}`}
+            className="spCategoriePath"
+          >
+            {decodeURI(categorie)}
           </Link>
           <img className="spCategoriePathArrow" src={arrowRight} alt="" />
           <div className="spCategoriePathName">{product.partNumber}</div>

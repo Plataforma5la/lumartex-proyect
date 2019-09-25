@@ -25,6 +25,7 @@ class Products extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const { apiUrl } = this.props;
     apiUrl && this.getProducts(apiUrl);
   }
