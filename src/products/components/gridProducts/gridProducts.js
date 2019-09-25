@@ -27,15 +27,26 @@ class GridProducts extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { actualIndex } = this.state;
+    const { actualIndex, totalIndex } = this.state;
     let numOfProducts = window.innerWidth < 768 ? 8 : 9;
+    let initIndex = 0;
+    if (actualIndex !== 1) {
+      initIndex = actualIndex * numOfProducts - numOfProducts;
+    }
     if (prevProps.products.length !== this.props.products.length) {
-      let initIndex = 0;
-      if (actualIndex !== 1) {
-        initIndex = actualIndex * numOfProducts - numOfProducts;
-      }
       this.setState({
         totalIndex: Math.ceil(this.props.products.length / numOfProducts),
+        productsToShow: this.props.products.slice(
+          initIndex,
+          actualIndex * numOfProducts
+        )
+      });
+    }
+    if (
+      prevState.totalIndex !== totalIndex ||
+      prevState.actualIndex !== actualIndex
+    ) {
+      this.setState({
         productsToShow: this.props.products.slice(
           initIndex,
           actualIndex * numOfProducts
@@ -95,8 +106,11 @@ class GridProducts extends React.Component {
 
                 <div className="productName">{product.partNumber}</div>
                 <div className="productDescription">{product.name}</div>
+                {console.log(encodeURI(product.categories[0]))}
                 <Link
-                  to={`/products/${product._id}/${product.categories[0]}`}
+                  to={`/products/${product._id}/${encodeURI(
+                    product.categories[0]
+                  )}`}
                   className="productLink"
                 >
                   view more →

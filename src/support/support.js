@@ -15,6 +15,11 @@ export default class Support extends React.Component {
       catalogues: [1, 2, 3, 4, 5, 6, 7, 8, 9]
     };
   }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const { catalogues } = this.state;
     return (
@@ -31,7 +36,7 @@ export default class Support extends React.Component {
           {catalogues.map(e => (
             <div className="supportCatalogue">
               <img src={catalogue} alt="" className="supportCatalogueImage" />
-              <div className="supportCatalogeName">Catalogue name</div>
+              <div className="supportCatalogeName">Catalogue Name</div>
               <div className="supportContainer2">
                 <div className="supportCatalogeDate">
                   <img src={calendar} alt="" className="supportImage" />

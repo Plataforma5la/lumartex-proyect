@@ -6,6 +6,9 @@ import aboutImageMobile from "./assets/aboutImageMobile.png";
 import "./about.css";
 
 export default class About extends React.Component {
+  componentDidMount(){
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <div className="aboutContainer">

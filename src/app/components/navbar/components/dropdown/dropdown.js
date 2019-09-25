@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import "./dropdown.css";
 
 export default class Dropdown extends React.Component {
@@ -11,9 +11,13 @@ export default class Dropdown extends React.Component {
           <div>
             <div className="dropdownSection">Name</div>
             {products.name.map(produ => (
-              <div className="dropdownProduct" key={produ._id}>
+              <Link
+                className="dropdownProduct"
+                key={produ._id}
+                to={`/products/${produ._id}/${produ._source.categories[0]}`}
+              >
                 {produ._source.name}
-              </div>
+              </Link>
             ))}
           </div>
         ) : null}
@@ -22,9 +26,13 @@ export default class Dropdown extends React.Component {
           <div>
             <div className="dropdownSection">Part Number</div>
             {products.partNumber.map(prod => (
-              <div className="dropdownProduct" key={prod._id}>
+              <Link
+                className="dropdownProduct"
+                key={prod._id}
+                to={`/products/${prod._id}/${prod._source.categories[0]}`}
+              >
                 {prod._source.partNumber}
-              </div>
+              </Link>
             ))}
           </div>
         ) : null}

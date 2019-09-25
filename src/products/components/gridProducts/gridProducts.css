@@ -14,6 +14,7 @@
     background: #ffffff;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.04);
     margin-top: 24px;
+    position: relative;
   }
 
   .product:hover {
@@ -29,13 +30,13 @@
 
   .productName {
     font-size: 14px;
+    padding-left: 24px;
     line-height: 17px;
     letter-spacing: 0.08em;
-    color: #303030;
     text-transform: uppercase;
+    margin-top: 18px;
     text-align: start;
-    padding-left: 24px;
-    margin-top: 32px;
+    color: #303030;
   }
 
   .productDescription {
@@ -61,6 +62,8 @@
     text-decoration: none;
     padding-left: 24px;
     margin-top: 32px;
+    position: absolute;
+    bottom: 20px;
   }
 
   .productLink:hover {
@@ -123,6 +126,7 @@
     background: #ffffff;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.04);
     margin-top: 24px;
+    position: relative;
   }
 
   .product:hover {
@@ -132,7 +136,7 @@
   .productImage {
     width: 100%;
     margin-top: 8px;
-    max-height: 75px;
+    height: 75px;
     object-fit: contain;
   }
 
@@ -144,7 +148,7 @@
     text-transform: uppercase;
     text-align: start;
     padding-left: 8px;
-    margin-top: 10px;
+    margin-top: 8px;
   }
 
   .productDescription {
@@ -157,7 +161,7 @@
     color: #303030;
     text-align: start;
     padding-left: 8px;
-    margin-top: 10px;
+    margin-top: 8px;
   }
 
   .productLink {
@@ -170,7 +174,8 @@
     color: #6788ff;
     text-decoration: none;
     padding-left: 8px;
-    margin-top: 20px;
+    position: absolute;
+    bottom: 4px;
   }
 
   .productLink:hover {
