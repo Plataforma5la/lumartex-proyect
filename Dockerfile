@@ -13,12 +13,16 @@ ENV NPM_CONFIG_LOGLEVEL warn
 # Set working dir
 WORKDIR /srv/www
 # Bundle app source
-COPY build ./
+COPY . .
 # To mitigate issues with npm saturating the network interface we limit the number of concurrent connections
 RUN npm config set maxsockets 5 && npm config set progress false
 # Install pm2
 RUN npm install -g pm2
+RUN npm install -g yarn
+RUN yarn install
+RUN yarn run build
+WORKDIR /srv/www/build
 # Actual script to start can be overridden from `docker run`
-CMD ["pm2", "serve", "--no-daemon", ".", "5000"]
+CMD pm2 start --no-daemon index.js
 # Expose ports
 EXPOSE 5000

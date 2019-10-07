@@ -1,27 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, StaticRouter } from "react-router-dom";
-import "./index.css";
-import App from "./app/AppContainer";
-import * as serviceWorker from "./serviceWorker";
+import express from "express";
 
-import { Provider } from "react-redux";
-import configureStore from "./store";
+let app = require("./server").default;
 
-let configManagerStore = configureStore();
+if (module.hot) {
+  module.hot.accept("./server", () => {
+    console.log("Server reloading...");
 
-ReactDOM.render(
-  <Provider store={configManagerStore}>
-    <StaticRouter>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </StaticRouter>
-  </Provider>,
-  document.getElementById("root")
-);
+    try {
+      app = require("./server").default;
+    } catch (error) {
+      // Do nothing
+    }
+  });
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+express()
+  .use((req, res) => app.handle(req, res))
+  .listen(process.env.PORT || 5000, () => {
+    console.log(
+      `React SSR App is running: http://localhost:${process.env.PORT || 5000}`
+    );
+  });
