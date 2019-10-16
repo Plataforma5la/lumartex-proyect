@@ -5,10 +5,6 @@
     <link rel="shortcut icon" href="%ASSETS_PATH%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-ssr-app"
-    />
     <link rel="apple-touch-icon" href="logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -20,12 +16,43 @@
       It will be replaced with the value of the ASSETS_PATH env var during the build.
       The default value is '/' and can be configured by setting the ASSETS_PATH env var.
     -->
-    <title>React SSR App</title>
+    <title>Lumartex</title>
+    <meta name="description" content="Description for lumartex in google." />
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Lumartex" />
+    <meta
+      itemprop="description"
+      content="Description for lumartex in google."
+    />
+    <meta itemprop="image" content="" />
+
+    <!-- Facebook Meta Tags -->
+    <meta
+      property="og:url"
+      content="http://ec2-3-231-177-0.compute-1.amazonaws.com"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Lumartex" />
+    <meta
+      property="og:description"
+      content="Description for lumartex in google."
+    />
+    <meta property="og:image" content="" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lumartex" />
+    <meta
+      name="twitter:description"
+      content="Description for lumartex in google."
+    />
+    <meta name="twitter:image" content="" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script>
-      window.PRELOADED_STATE = __PRELOADED_STATE__
+      window.PRELOADED_STATE = __PRELOADED_STATE__;
     </script>
     <div id="root">__HTML_CONTENT__</div>
     <!--
