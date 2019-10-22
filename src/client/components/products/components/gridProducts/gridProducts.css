@@ -50,6 +50,9 @@
     color: #303030;
     height: 74px;
   }
+  .productDescription::first-letter {
+    text-transform: uppercase;
+  }
 
   .productLink {
     font-size: 14px;

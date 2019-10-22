@@ -46,6 +46,7 @@ class SingleProduct extends React.Component {
   componentDidUpdate(prevProps) {
     const { apiUrl } = this.props;
     if (prevProps.id !== this.props.id || prevProps.apiUrl !== apiUrl) {
+      window.scrollTo(0, 0);
       Axios.get(`${apiUrl}/api/products/${this.props.id}`)
         .then(res => res.data[0])
         .then(product => {

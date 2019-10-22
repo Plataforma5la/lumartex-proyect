@@ -39,7 +39,8 @@ class GridProducts extends React.Component {
         productsToShow: this.props.products.slice(
           initIndex,
           actualIndex * numOfProducts
-        )
+        ),
+        actualIndex: 1
       });
     }
     if (
