@@ -1,15 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import "./contact.css";
 import Axios from "axios";
 
-export default class Contact extends React.Component {
+
+class Contact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       email: "",
-      message: "",
+      text: "",
       error: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -29,10 +31,9 @@ export default class Contact extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { name, email, message } = this.state;
-
-    if (name && message && this.validarEmail(email)) {
-      return Axios.post("https://algunaApi.com", this.state);
+    const { name, email, text } = this.state;
+    if (name && text && this.validarEmail(email)) {
+      return Axios.post(`${this.props.apiUrl}/api/email/contact`, this.state);
     } else {
       this.setState({ error: true });
     }
@@ -60,9 +61,7 @@ export default class Contact extends React.Component {
               <div className="contactTitle">CONTACT US</div>
               <div className="contactInfo">
                 <div className="contactSubInfo">Address</div>
-                <Link to="/upload" className="contactSubInfo">
-                  Telephone
-                </Link>
+                <div className="contactSubInfo">Telephone</div>
                 <div className="contactSubInfo">Email</div>
               </div>
             </div>
@@ -87,7 +86,7 @@ export default class Contact extends React.Component {
             <textarea
               className="contactInput"
               type="text"
-              name="message"
+              name="text"
               placeholder="Your message"
               onChange={this.handleChange}
             />
@@ -107,3 +106,14 @@ export default class Contact extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    apiUrl: state.configReducer.config.apiUrl
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Contact);

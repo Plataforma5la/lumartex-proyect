@@ -78,11 +78,13 @@ class GridProducts extends React.Component {
       this.setState(({ actualIndex }) => ({ actualIndex: actualIndex - 1 }));
     }
   };
+
   nextIndex = () => {
     if (this.state.actualIndex !== this.state.totalIndex) {
       this.setState(({ actualIndex }) => ({ actualIndex: actualIndex + 1 }));
     }
   };
+
   handleClick = (e, actualIndex) => {
     e.preventDefault();
     this.setState({ actualIndex });

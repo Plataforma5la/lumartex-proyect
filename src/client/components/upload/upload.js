@@ -73,7 +73,17 @@ class Upload extends React.Component {
         description
       })
       .then(res => res.data)
-      .then(product => console.log(product));
+      .then(product => {
+        alert("tu producto fue subido correctamente");
+        this.setState({
+          partNumber: "",
+          name: "",
+          images: [],
+          description: "",
+          specs: "",
+          categories: ""
+        });
+      });
   };
   render() {
     const { apiUrl } = this.props;

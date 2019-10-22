@@ -36,6 +36,15 @@ class Navbar extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    if (prevProps.page !== this.props.page) {
+      this.setState({
+        inputValue: "",
+        products: {
+          name: [],
+          partNumber: []
+        }
+      });
+    }
     if (prevProps.page !== this.props.page && this.props.width <= 768) {
       this.setState({ openMenu: false });
     }
@@ -56,12 +65,6 @@ class Navbar extends React.Component {
     e.preventDefault();
     this.setState(({ openMenu }) => ({ openMenu: !openMenu }));
   }
-
-  handleClickProduct = (e, path) => {
-    e.preventDefault();
-    this.setState({ inputValue: "", statusMenu: false });
-    this.props.history.push(path);
-  };
 
   handleClick = (e, path) => {
     e.preventDefault();
@@ -136,7 +139,7 @@ class Navbar extends React.Component {
               products
               <img src={arrow} alt="arrow" className="arrow" />
             </Link>
-            <Link
+            {/* <Link
               className={
                 page === "/support" ? "navbarSectionActive" : "navbarSection"
               }
@@ -145,7 +148,7 @@ class Navbar extends React.Component {
             >
               support
               <img src={arrow} alt="arrow" className="arrow" />
-            </Link>
+            </Link> */}
             <Link
               className={
                 page === "/contact" ? "navbarSectionActive" : "navbarSection"

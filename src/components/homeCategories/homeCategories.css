@@ -139,7 +139,7 @@
     bottom: 0;
     right: 0;
     object-fit: contain;
-    max-height: 212px;
+    max-height: 75%;
   }
   .slider {
     background-color: red;
