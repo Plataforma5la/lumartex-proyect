@@ -60,9 +60,9 @@ class Contact extends React.Component {
             <div className="contactGridDescription">
               <div className="contactTitle">CONTACT US</div>
               <div className="contactInfo">
-                <div className="contactSubInfo">Address</div>
-                <div className="contactSubInfo">Telephone</div>
-                <div className="contactSubInfo">Email</div>
+                <div className="contactSubInfo">Address - 3267 Bee Caves Rd. Suite 107-74</div>
+                <div className="contactSubInfo">Mail - info@lumartex.com</div>
+                <div className="contactSubInfo"></div>
               </div>
             </div>
           )}

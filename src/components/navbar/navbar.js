@@ -167,7 +167,6 @@ class Navbar extends React.Component {
           <div>
             <input
               type="text"
-              placeholder="VM-HL28"
               value={inputValue}
               onChange={this.handleChange}
               onFocus={this.handleFocus}
@@ -198,7 +197,6 @@ class Navbar extends React.Component {
                 />
                 <input
                   type="text"
-                  placeholder="VM-HL28"
                   value={inputValue}
                   onChange={this.handleChange}
                   autoFocus
