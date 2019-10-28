@@ -13,15 +13,14 @@ export default class Dropdown extends React.Component {
             {products.name.map(produ => (
               <Link
                 className="dropdownProduct"
-                // onClick={e => handleClickProduct(e)}
                 to={`/products/${produ._id}/${
-                  produ._source.categories[0] === "Tv Carts/Stands"
+                  produ.categories[0] === "Tv Carts/Stands"
                     ? "Tv Carts-Stands"
-                    : produ._source.categories[0]
+                    : produ.categories[0]
                 }`}
                 key={produ._id}
               >
-                {produ._source.name}
+                {produ.name}
               </Link>
             ))}
           </div>
@@ -33,15 +32,14 @@ export default class Dropdown extends React.Component {
             {products.partNumber.map(prod => (
               <Link
                 className="dropdownProduct"
-                // onClick={e => handleClickProduct(e)}
                 to={`/products/${prod._id}/${
-                  prod._source.categories[0] === "Tv Carts/Stands"
+                  prod.categories[0] === "Tv Carts/Stands"
                     ? "Tv Carts-Stands"
-                    : prod._source.categories[0]
+                    : prod.categories[0]
                 }`}
                 key={prod._id}
               >
-                {prod._source.partNumber}
+                {prod.partNumber}
               </Link>
             ))}
           </div>

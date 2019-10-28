@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import "./contact.css";
 import Axios from "axios";
 
+import "./contact.css";
+import Modal from "../modal/modal";
 
 class Contact extends React.Component {
   constructor(props) {
@@ -12,7 +12,8 @@ class Contact extends React.Component {
       name: "",
       email: "",
       text: "",
-      error: false
+      error: false,
+      succes: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,11 +34,33 @@ class Contact extends React.Component {
     e.preventDefault();
     const { name, email, text } = this.state;
     if (name && text && this.validarEmail(email)) {
-      return Axios.post(`${this.props.apiUrl}/api/email/contact`, this.state);
+      Axios.post(`${this.props.apiUrl}/api/email/contact`, this.state)
+        .then(res => res.data)
+        .then(body => {
+          this.setState({ succes: true });
+        })
+        .catch(err => this.setState({ error: true }));
     } else {
       this.setState({ error: true });
     }
   }
+
+  handleSucces = e => {
+    this.setState({
+      name: "",
+      email: "",
+      text: "",
+      error: false,
+      succes: false
+    });
+  };
+
+  handleError = e => {
+    this.setState({
+      error: false,
+      succes: false
+    });
+  };
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -46,12 +69,27 @@ class Contact extends React.Component {
   render() {
     return (
       <div className="contactContainer">
+        {this.state.succes ? (
+          <Modal
+            text="Your message has been sent"
+            handleClick={this.handleSucces}
+          />
+        ) : null}
+        {this.state.succes ? (
+          <Modal
+            text="Your message could not be sent, check all fields"
+            handleClick={this.handleError}
+          />
+        ) : null}
+
         <iframe
           className="aboutIframe"
           title="iframe"
           src="https://maps.google.com/?ll=30.274363,-97.8032097&z=17&t=m&output=embed"
           frameBorder="0"
           allowFullScreen
+          same-site="none"
+          secure="true"
         />
         <div className="contactGrid">
           {this.props.width < 768 ? (
@@ -60,7 +98,9 @@ class Contact extends React.Component {
             <div className="contactGridDescription">
               <div className="contactTitle">CONTACT US</div>
               <div className="contactInfo">
-                <div className="contactSubInfo">Address - 3267 Bee Caves Rd. Suite 107-74</div>
+                <div className="contactSubInfo">
+                  Address - 3267 Bee Caves Rd. Suite 107-74
+                </div>
                 <div className="contactSubInfo">Mail - info@lumartex.com</div>
                 <div className="contactSubInfo"></div>
               </div>
@@ -74,6 +114,7 @@ class Contact extends React.Component {
                 name="name"
                 placeholder="Name"
                 onChange={this.handleChange}
+                value={this.state.name}
               />
               <input
                 className="contactInput"
@@ -81,6 +122,7 @@ class Contact extends React.Component {
                 name="email"
                 placeholder="Email"
                 onChange={this.handleChange}
+                value={this.state.email}
               />
             </div>
             <textarea
@@ -89,6 +131,7 @@ class Contact extends React.Component {
               name="text"
               placeholder="Your message"
               onChange={this.handleChange}
+              value={this.state.text}
             />
             <button className="contactButton" onClick={this.handleSubmit}>
               send
@@ -96,9 +139,9 @@ class Contact extends React.Component {
           </div>
           {this.props.width < 768 ? (
             <div className="contactInfo">
-              <div className="contactSubInfo">Address</div>
-              <div className="contactSubInfo">Telephone</div>
-              <div className="contactSubInfo">Email</div>
+              <div className="contactSubInfo">Address - 3267 Bee Caves Rd. Suite 107-74</div>
+              {/* <div className="contactSubInfo">Telephone</div> */}
+              <div className="contactSubInfo">Mail - info@lumartex.com</div>
             </div>
           ) : null}
         </div>

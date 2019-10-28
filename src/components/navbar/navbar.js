@@ -42,7 +42,8 @@ class Navbar extends React.Component {
         products: {
           name: [],
           partNumber: []
-        }
+        },
+        openSearch: false
       });
     }
     if (prevProps.page !== this.props.page && this.props.width <= 768) {
@@ -85,6 +86,7 @@ class Navbar extends React.Component {
       Axios.get(`${this.props.apiUrl}/api/products?q=${e.target.value}`)
         .then(res => res.data)
         .then(products => {
+          console.log("soy los products", products);
           this.setState({ products, statusMenu: true });
         });
     }

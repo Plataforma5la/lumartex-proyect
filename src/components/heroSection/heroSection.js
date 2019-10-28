@@ -16,7 +16,7 @@ export default class HeroSection extends React.Component {
               className="heroContainer"
               alt=""
             />
-            <div className="heroTitle">PRODUCTS</div>
+            <div className="heroTitle">SIT STAND LAPTOP</div>
             <button className="heroButton">
               <Link to="/products">VIEW PRODUCTS</Link>
             </button>
@@ -24,7 +24,7 @@ export default class HeroSection extends React.Component {
           </div>
         ) : (
           <div className="heroContainer">
-            <div className="heroTitle">PRODUCTS</div>
+            <div className="heroTitle">SIT STAND LAPTOP</div>
             <button className="heroButton">
               <Link to="/products">VIEW PRODUCTS</Link>
             </button>

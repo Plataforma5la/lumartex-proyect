@@ -108,11 +108,17 @@
     align-items: center;
     text-align: center;
     justify-content: center;
+    text-decoration: none;
     color: #ffffff;
     margin-left: 24px;
     margin-top: 10px;
   }
 
+  .heroButton a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
   .heroArrow {
     width: 7px;
     margin-top: 24px;
