@@ -1,0 +1,16 @@
+version: "3"
+services:
+  web:
+    image: adolfoecs/lumartex-web:1.0.0
+    environment:
+    - API_URL=http://192.168.99.100:8080
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 300M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "5000:5000"

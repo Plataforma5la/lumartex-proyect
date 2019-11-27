@@ -5,7 +5,7 @@ export const USERS_LOADED = "@ssr/users/loaded";
 const initialState = {
   config: {
     applicationName: "react template",
-    apiUrl: "http://ec2-3-231-181-237.compute-1.amazonaws.com:8080",
+    apiUrl: process.env.API_URL,
     categories: [
       {
         name: "Monitor Arms",
