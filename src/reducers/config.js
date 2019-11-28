@@ -5,7 +5,7 @@ export const USERS_LOADED = "@ssr/users/loaded";
 const initialState = {
   config: {
     applicationName: "react template",
-    apiUrl: "http://ec2-54-145-122-152.compute-1.amazonaws.com:8080",
+    apiUrl: "http://terraform-asg-example-1060644098.us-east-1.elb.amazonaws.com:8080",
     categories: [
       {
         name: "Monitor Arms",
