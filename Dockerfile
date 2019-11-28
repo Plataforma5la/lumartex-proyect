@@ -11,6 +11,7 @@ FROM node:carbon
 # The base node image sets a very verbose log level.
 ENV NPM_CONFIG_LOGLEVEL warn
 ENV API_URL localhost:8080
+ENV DOMAIN localhost
 # Set working dir
 WORKDIR /srv/www
 # Bundle app source

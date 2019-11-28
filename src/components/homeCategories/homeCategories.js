@@ -42,13 +42,13 @@ class HomeCategories extends React.Component {
       categories.map(category => (
         <div className="categoryCard" key={category._id}>
           <div className="categoryTitle">
-            {category._source.description}
-            <Link to={`/products?${category._source.description}`}>
+            {category.description}
+            <Link to={`/products?${category.description}`}>
               <div className="categoryLink">View All →</div>
             </Link>
           </div>
           <img
-            src={require(`./assets/${category._source.image}`)}
+            src={require(`./assets/${category.image}`)}
             alt="img"
             className="categoryImage"
           />
