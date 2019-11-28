@@ -1,7 +1,9 @@
 version: "3"
 services:
   web:
-    image: plataforma5/lumartex-project:production0.2
+    image: adolfoecs/lumartex-web:1.0.8
+    environment:
+    - API_URL=http://terraform-asg-example-1060644098.us-east-1.elb.amazonaws.com:8080
     deploy:
       replicas: 1
       resources:
