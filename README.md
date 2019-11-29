@@ -29,6 +29,18 @@ See the section about [deployment](https://create-react-ssr-app.dev/docs/deploym
 
 ### `npm run eject`
 
+### Docker
+
+In order to create a docker image for PROD, here you have the command
+
+```docker build . -t adolfoecs/lumartex-web:1.0.4```
+
+but if you want to change the domain for SEO for staging env 
+
+```docker build . --build-arg DOMAIN_URL=http://192.168.99.100:5000 -t adolfoecs/lumartex-web:1.0.4```
+
+As you can see there is a DOMAIN_URL arg that will drive the SEO URL.
+
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.

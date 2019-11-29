@@ -16,7 +16,7 @@
     opacity: 0;
   }
   .dropdownProduct {
-    padding: 10px;
+    padding: 10px 25px;
     font-size: 16px;
     line-height: 19px;
     color: #000000;
@@ -24,9 +24,9 @@
     align-items: center;
     justify-content: flex-start;
     text-align: start;
-    padding-left: 25px;
     text-transform: uppercase;
     text-decoration: none;
+    cursor: pointer;
   }
 
   .dropdownProduct:hover {

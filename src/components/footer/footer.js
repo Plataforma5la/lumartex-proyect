@@ -20,9 +20,9 @@ export default class Footer extends React.Component {
             <Link className="footerSection" to="/products">
               products
             </Link>
-            <Link className="footerSection" to="/support">
+            {/* <Link className="footerSection" to="/support">
               support
-            </Link>
+            </Link> */}
             <Link className="footerSection" to="/contact">
               contact
             </Link>

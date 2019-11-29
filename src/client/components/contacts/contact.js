@@ -1,16 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./contact.css";
+import { connect } from "react-redux";
 import Axios from "axios";
 
-export default class Contact extends React.Component {
+import "./contact.css";
+import Modal from "../modal/modal";
+
+class Contact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       email: "",
-      message: "",
-      error: false
+      text: "",
+      error: false,
+      succes: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,14 +32,35 @@ export default class Contact extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { name, email, message } = this.state;
-
-    if (name && message && this.validarEmail(email)) {
-      return Axios.post("https://algunaApi.com", this.state);
+    const { name, email, text } = this.state;
+    if (name && text && this.validarEmail(email)) {
+      Axios.post(`${this.props.apiUrl}/api/email/contact`, this.state)
+        .then(res => res.data)
+        .then(body => {
+          this.setState({ succes: true });
+        })
+        .catch(err => this.setState({ error: true }));
     } else {
       this.setState({ error: true });
     }
   }
+
+  handleSucces = e => {
+    this.setState({
+      name: "",
+      email: "",
+      text: "",
+      error: false,
+      succes: false
+    });
+  };
+
+  handleError = e => {
+    this.setState({
+      error: false,
+      succes: false
+    });
+  };
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -45,12 +69,27 @@ export default class Contact extends React.Component {
   render() {
     return (
       <div className="contactContainer">
+        {this.state.succes ? (
+          <Modal
+            text="Your message has been sent"
+            handleClick={this.handleSucces}
+          />
+        ) : null}
+        {this.state.succes ? (
+          <Modal
+            text="Your message could not be sent, check all fields"
+            handleClick={this.handleError}
+          />
+        ) : null}
+
         <iframe
           className="aboutIframe"
           title="iframe"
           src="https://maps.google.com/?ll=30.274363,-97.8032097&z=17&t=m&output=embed"
           frameBorder="0"
           allowFullScreen
+          same-site="none"
+          secure="true"
         />
         <div className="contactGrid">
           {this.props.width < 768 ? (
@@ -59,11 +98,11 @@ export default class Contact extends React.Component {
             <div className="contactGridDescription">
               <div className="contactTitle">CONTACT US</div>
               <div className="contactInfo">
-                <div className="contactSubInfo">Address</div>
-                <Link to="/upload" className="contactSubInfo">
-                  Telephone
-                </Link>
-                <div className="contactSubInfo">Email</div>
+                <div className="contactSubInfo">
+                  Address - 3267 Bee Caves Rd. Suite 107-74
+                </div>
+                <div className="contactSubInfo">Mail - info@lumartex.com</div>
+                <div className="contactSubInfo"></div>
               </div>
             </div>
           )}
@@ -75,6 +114,7 @@ export default class Contact extends React.Component {
                 name="name"
                 placeholder="Name"
                 onChange={this.handleChange}
+                value={this.state.name}
               />
               <input
                 className="contactInput"
@@ -82,14 +122,16 @@ export default class Contact extends React.Component {
                 name="email"
                 placeholder="Email"
                 onChange={this.handleChange}
+                value={this.state.email}
               />
             </div>
             <textarea
               className="contactInput"
               type="text"
-              name="message"
+              name="text"
               placeholder="Your message"
               onChange={this.handleChange}
+              value={this.state.text}
             />
             <button className="contactButton" onClick={this.handleSubmit}>
               send
@@ -97,9 +139,9 @@ export default class Contact extends React.Component {
           </div>
           {this.props.width < 768 ? (
             <div className="contactInfo">
-              <div className="contactSubInfo">Address</div>
-              <div className="contactSubInfo">Telephone</div>
-              <div className="contactSubInfo">Email</div>
+              <div className="contactSubInfo">Address - 3267 Bee Caves Rd. Suite 107-74</div>
+              {/* <div className="contactSubInfo">Telephone</div> */}
+              <div className="contactSubInfo">Mail - info@lumartex.com</div>
             </div>
           ) : null}
         </div>
@@ -107,3 +149,14 @@ export default class Contact extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    apiUrl: state.configReducer.config.apiUrl
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Contact);

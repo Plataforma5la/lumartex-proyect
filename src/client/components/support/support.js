@@ -25,9 +25,9 @@ export default class Support extends React.Component {
     return (
       <div className="supportContainer">
         <div className="supportTitle">
-          Catalogues{" "}
+          Catalogues
           <div className="supportFilter">
-            more recent{" "}
+            more recent
             <img src={arrowDown} alt="" className="supportArrowDown" />
           </div>
         </div>

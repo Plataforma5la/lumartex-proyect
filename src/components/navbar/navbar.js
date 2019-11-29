@@ -36,6 +36,16 @@ class Navbar extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    if (prevProps.page !== this.props.page) {
+      this.setState({
+        inputValue: "",
+        products: {
+          name: [],
+          partNumber: []
+        },
+        openSearch: false
+      });
+    }
     if (prevProps.page !== this.props.page && this.props.width <= 768) {
       this.setState({ openMenu: false });
     }
@@ -57,12 +67,6 @@ class Navbar extends React.Component {
     this.setState(({ openMenu }) => ({ openMenu: !openMenu }));
   }
 
-  handleClickProduct = (e, path) => {
-    e.preventDefault();
-    this.setState({ inputValue: "", statusMenu: false });
-    this.props.history.push(path);
-  };
-
   handleClick = (e, path) => {
     e.preventDefault();
     if (this.state.statusMenu) {
@@ -82,6 +86,7 @@ class Navbar extends React.Component {
       Axios.get(`${this.props.apiUrl}/api/products?q=${e.target.value}`)
         .then(res => res.data)
         .then(products => {
+          console.log("soy los products", products);
           this.setState({ products, statusMenu: true });
         });
     }
@@ -136,7 +141,7 @@ class Navbar extends React.Component {
               products
               <img src={arrow} alt="arrow" className="arrow" />
             </Link>
-            <Link
+            {/* <Link
               className={
                 page === "/support" ? "navbarSectionActive" : "navbarSection"
               }
@@ -145,7 +150,7 @@ class Navbar extends React.Component {
             >
               support
               <img src={arrow} alt="arrow" className="arrow" />
-            </Link>
+            </Link> */}
             <Link
               className={
                 page === "/contact" ? "navbarSectionActive" : "navbarSection"
@@ -164,7 +169,6 @@ class Navbar extends React.Component {
           <div>
             <input
               type="text"
-              placeholder="VM-HL28"
               value={inputValue}
               onChange={this.handleChange}
               onFocus={this.handleFocus}
@@ -195,7 +199,6 @@ class Navbar extends React.Component {
                 />
                 <input
                   type="text"
-                  placeholder="VM-HL28"
                   value={inputValue}
                   onChange={this.handleChange}
                   autoFocus

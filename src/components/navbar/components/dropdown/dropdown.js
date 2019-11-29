@@ -1,31 +1,27 @@
 import React from "react";
 import "./dropdown.css";
+import { Link } from "react-router-dom";
 
 export default class Dropdown extends React.Component {
   render() {
-    const { products, statusMenu, handleClickProduct } = this.props;
+    const { products, statusMenu } = this.props;
     return (
       <div className="dropdownContainer">
         {products.name.length && statusMenu ? (
           <div>
             <div className="dropdownSection">Name</div>
             {products.name.map(produ => (
-              <div
+              <Link
                 className="dropdownProduct"
-                onClick={e =>
-                  handleClickProduct(
-                    e,
-                    `/products/${produ._id}/${
-                      produ._source.categories[0] === "Tv Carts/Stands"
-                        ? "Tv Carts-Stands"
-                        : produ._source.categories[0]
-                    }`
-                  )
-                }
+                to={`/products/${produ._id}/${
+                  produ.categories[0] === "Tv Carts/Stands"
+                    ? "Tv Carts-Stands"
+                    : produ.categories[0]
+                }`}
                 key={produ._id}
               >
-                {produ._source.name}
-              </div>
+                {produ.name}
+              </Link>
             ))}
           </div>
         ) : null}
@@ -34,22 +30,17 @@ export default class Dropdown extends React.Component {
           <div>
             <div className="dropdownSection">Part Number</div>
             {products.partNumber.map(prod => (
-              <div
+              <Link
                 className="dropdownProduct"
+                to={`/products/${prod._id}/${
+                  prod.categories[0] === "Tv Carts/Stands"
+                    ? "Tv Carts-Stands"
+                    : prod.categories[0]
+                }`}
                 key={prod._id}
-                onClick={e =>
-                  handleClickProduct(
-                    e,
-                    `/products/${prod._id}/${
-                      prod._source.categories[0] === "Tv Carts/Stands"
-                        ? "Tv Carts-Stands"
-                        : prod._source.categories[0]
-                    }`
-                  )
-                }
               >
-                {prod._source.partNumber}
-              </div>
+                {prod.partNumber}
+              </Link>
             ))}
           </div>
         ) : null}

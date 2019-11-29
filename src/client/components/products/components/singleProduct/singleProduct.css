@@ -21,7 +21,7 @@
   }
 
   .singleProductContainer ul.slick-dots {
-    bottom: -50px;
+    bottom: -75px;
   }
 
   .singleProductContainer ul.slick-dots li {
@@ -94,7 +94,6 @@
     display: flex;
     justify-content: space-between;
     padding: 0 50px;
-    margin-left: 40px;
     margin-top: 40px;
   }
 

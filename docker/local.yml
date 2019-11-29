@@ -1,9 +1,9 @@
 version: "3"
 services:
   web:
-    image: adolfoecs/lumartex-web:1.0.0
+    image: adolfoecs/lumartex-web:release-1.1.0
     environment:
-    - API_URL=http://192.168.99.100:8080
+    - API_URL=http://www.lumartex.com:8080
     deploy:
       replicas: 1
       resources:

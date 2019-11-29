@@ -14,7 +14,6 @@ import arrowRightSlider from "./assets/arrowRightSlider.svg";
 import arrowLeftSlider from "./assets/arrowRightSlider.svg";
 import arrowDown from "./assets/arrowDown.svg";
 import arrowDownBlue from "./assets/arrowDownBlue.svg";
-import image from "./assets/image.png";
 
 class SingleProduct extends React.Component {
   constructor(props) {
@@ -23,15 +22,23 @@ class SingleProduct extends React.Component {
       product: {},
       info: "description",
       descMobile: false,
-      specsMobile: false
+      specsMobile: false,
+      components: []
     };
   }
   componentDidMount() {
-    const { apiUrl } = this.props;
+    const { apiUrl, id } = this.props;
     if (apiUrl) {
-      Axios.get(`${apiUrl}/api/products/${this.props.id}`)
+      Axios.get(`${apiUrl}/api/products/${id}`)
         .then(res => res.data[0])
-        .then(product => this.setState({ product }))
+        .then(product => {
+          this.setState({ product });
+          Axios.get(
+            `${apiUrl}/api/products/relatedProducts/${id}/${
+              product.categories[0]
+            }`
+          ).then(components => this.setState({ components: components.data }));
+        })
         .catch(err => console.log(err));
     }
   }
@@ -39,9 +46,18 @@ class SingleProduct extends React.Component {
   componentDidUpdate(prevProps) {
     const { apiUrl } = this.props;
     if (prevProps.id !== this.props.id || prevProps.apiUrl !== apiUrl) {
+      window.scrollTo(0, 0);
       Axios.get(`${apiUrl}/api/products/${this.props.id}`)
         .then(res => res.data[0])
-        .then(product => this.setState({ product }));
+        .then(product => {
+          this.setState({ product });
+          Axios.get(
+            `${apiUrl}/api/products/relatedProducts/${product._id}/${
+              product.categories[0]
+            }`
+          ).then(components => this.setState({ components: components.data }));
+        })
+        .catch(err => console.log(err));
     }
   }
 
@@ -66,8 +82,8 @@ class SingleProduct extends React.Component {
   };
 
   render() {
-    const { product, info } = this.state;
-    const { categorie, apiUrl } = this.props;
+    const { product, info, components } = this.state;
+    const { apiUrl } = this.props;
     const settings = {
       centerMode: false,
       customPaging: function(i) {
@@ -89,72 +105,70 @@ class SingleProduct extends React.Component {
       arrows: false,
       draggable: false
     };
-    const components = [
-      <div className="product" key={1}>
-        <img src={image} alt="" className="productImage" />
-        <div className="productName">{product.partNumber}</div>
-        <div className="productDescription">{product.name}</div>
-        <Link
-          to={`/products/${product._id}/${categorie}`}
-          className="productLink"
-        >
-          view more →
-        </Link>
-      </div>,
-      <div className="product" key={2}>
-        <img src={image} alt="" className="productImage" />
-        <div className="productName">{product.name}</div>
-        <div className="productDescription">
-          Laptop stand and monitor mounts
-        </div>
-        <Link
-          to={`/products/${product._id}/${categorie}`}
-          className="productLink"
-        >
-          view more →
-        </Link>
-      </div>,
-      <div className="product" key={3}>
-        <img src={image} alt="" className="productImage" />
-        <div className="productName">{product.name}</div>
-        <div className="productDescription">
-          Laptop stand and monitor mounts
-        </div>
-        <Link
-          to={`/products/${product._id}/${categorie}`}
-          className="productLink"
-        >
-          view more →
-        </Link>
-      </div>
-    ];
+    const relatedProducts =
+      components[0] &&
+      components
+        .filter(e => e._id !== this.props.id)
+        .map(component => {
+          return (
+            <div className="product" key={component._id}>
+              <img
+                src={`${this.props.apiUrl + component.images[0]}`}
+                alt=""
+                className="productImage"
+              />
+
+              <div className="productName">{component.partNumber}</div>
+              <div className="productDescription">{component.name}</div>
+              <Link
+                to={`/products/${component._id}/${
+                  component.categories[0] === "Tv Carts/Stands"
+                    ? "Tv Carts-Stands"
+                    : component.categories[0]
+                }`}
+                className="productLink"
+              >
+                view more →
+              </Link>
+            </div>
+          );
+        });
     return (
       <div className="singleProductContainer">
         <div className="singleProductPath">
-          {console.log(product)}
           <Link
-            to={`/products?${product._id && product.categories[0]}`}
+            to={`/products?${product && product._id && product.categories[0]}`}
             className="spCategoriePath"
           >
-            {product._id && product.categories[0]}
+            {product && product._id && product.categories[0]}
           </Link>
           <img className="spCategoriePathArrow" src={arrowRight} alt="" />
-          <div className="spCategoriePathName">{product.partNumber}</div>
+          <div className="spCategoriePathName">
+            {product && product._id && product.partNumber}
+          </div>
         </div>
         <div className="singleProductPresentation">
           <div className="singleProductTitle">
-            <div className="singleProductName">{product.partNumber}</div>
-            <div className="singleProductSubname">{product.name}</div>
+            <div className="singleProductName">
+              {product && product._id && product.partNumber}
+            </div>
+            <div className="singleProductSubname">
+              {product &&
+                product._id &&
+                product.name[0].toUpperCase() + product.name.slice(1)}
+            </div>
           </div>
           <div className="singleProductImages">
             <Slider {...settings} ref={c => (this.slider = c)}>
-              {product.images &&
+              {product &&
+                product._id &&
                 product.images.map(image => {
                   return (
                     <img
                       src={this.props.apiUrl + image}
                       alt=""
                       className="singleProdImage"
+                      key={image}
                     />
                   );
                 })}
@@ -187,7 +201,9 @@ class SingleProduct extends React.Component {
                 <img src={arrowDown} alt="" className="arrowDownMobile" />
               </div>
               {this.state.descMobile ? (
-                <div className="descDataMobile">{product.description}</div>
+                <div className="descDataMobile">
+                  {product && product._id && product.description}
+                </div>
               ) : null}
             </div>
             <div
@@ -199,7 +215,9 @@ class SingleProduct extends React.Component {
                 <img src={arrowDownBlue} alt="" className="arrowDownMobile" />
               </div>
               {this.state.specsMobile ? (
-                <div className="specsDataMobile">{product.specs}</div>
+                <div className="specsDataMobile">
+                  {product && product._id && product.specs}
+                </div>
               ) : null}
             </div>
           </div>
@@ -228,7 +246,9 @@ class SingleProduct extends React.Component {
               </div>
             </div>
             <div className="singleProductInfoData">
-              {info === "description" ? product.description : product.specs}
+              {info === "description"
+                ? product && product._id && product.description
+                : product && product._id && product.specs}
             </div>
           </div>
         )}
@@ -237,7 +257,7 @@ class SingleProduct extends React.Component {
             <div className="relatedProductsTitle"> Related Products</div>
             <AliceCarousel
               mouseDragEnabled
-              items={components}
+              items={relatedProducts}
               duration={200}
               infinite={false}
               buttonsDisabled
@@ -250,7 +270,7 @@ class SingleProduct extends React.Component {
         ) : (
           <div className="relatedProducts">
             <div className="relatedProductsTitle"> Related Products</div>
-            <div className="relatedProductsCards">{components}</div>
+            <div className="relatedProductsCards">{relatedProducts}</div>
           </div>
         )}
       </div>

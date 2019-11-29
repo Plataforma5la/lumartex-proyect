@@ -45,16 +45,28 @@
     outline: none;
     justify-content: center;
   }
+
+  .heroButton a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .heroButton a:active {
+    color: #6788ff;
+  }
+
   .heroButton:hover {
     background: #6788ff;
     box-shadow: 0px 0px 10px #6788ff;
   }
+
   .heroButton:active {
     background: #ffffff;
     box-shadow: 0px 0px 10px #6788ff;
     color: #6788ff;
     outline: none;
   }
+
   .heroArrow {
     position: absolute;
     right: 50%;
@@ -96,11 +108,17 @@
     align-items: center;
     text-align: center;
     justify-content: center;
+    text-decoration: none;
     color: #ffffff;
     margin-left: 24px;
     margin-top: 10px;
   }
 
+  .heroButton a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
   .heroArrow {
     width: 7px;
     margin-top: 24px;

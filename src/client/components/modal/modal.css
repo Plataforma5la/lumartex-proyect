@@ -1,0 +1,42 @@
+.backgroundAbsoltute {
+  width: 100%;
+  height: 180%;
+  background-color: rgba(51, 51, 51, 0.5);
+  position: absolute;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modalContainer {
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 120px;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.modalButton {
+  width: 188px;
+  height: 56px;
+  background: #6788ff;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  justify-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.modalText {
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-top: 140px;
+}

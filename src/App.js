@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
@@ -8,7 +8,7 @@ import HeroSection from "./components/heroSection/heroSection";
 import HomeCategories from "./components/homeCategories/homeCategories";
 import About from "./client/components/about/about";
 import Contact from "./client/components/contacts/contact";
-import Support from "./client/components/support/support";
+// import Support from "./client/components/support/support";
 import Products from "./client/components/products/products";
 import SingleProduct from "./client/components/products/components/singleProduct/singleProduct";
 import Upload from "./client/components/upload/upload";
@@ -67,11 +67,11 @@ class App extends React.Component {
             path="/contact"
             render={() => <Contact width={this.state.width} />}
           />
-          <Route
+          {/* <Route
             exact
             path="/support"
             render={() => <Support width={this.state.width} />}
-          />
+          /> */}
           <Route
             exact
             path="/upload"
@@ -99,6 +99,7 @@ class App extends React.Component {
               />
             )}
           />
+          <Redirect to="/" />
         </Switch>
         <Footer width={this.state.width} />
       </div>

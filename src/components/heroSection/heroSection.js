@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import arrow from "./assets/arrow.svg";
 import arrowDesktop from "./assets/arrowDesktop.svg";
 
@@ -17,13 +17,17 @@ export default class HeroSection extends React.Component {
               alt=""
             />
             <div className="heroTitle">SIT STAND LAPTOP</div>
-            <button className="heroButton">VIEW PRODUCT</button>
+            <button className="heroButton">
+              <Link to="/products">VIEW PRODUCTS</Link>
+            </button>
             <img src={arrow} alt="arrow" className="heroArrow" />
           </div>
         ) : (
           <div className="heroContainer">
             <div className="heroTitle">SIT STAND LAPTOP</div>
-            <button className="heroButton">VIEW PRODUCT</button>
+            <button className="heroButton">
+              <Link to="/products">VIEW PRODUCTS</Link>
+            </button>
             <img src={arrowDesktop} alt="arrowDesktop" className="heroArrow" />
           </div>
         )}

@@ -10,7 +10,9 @@ RUN apt-get -y install curl && \
 FROM node:carbon
 # The base node image sets a very verbose log level.
 ENV NPM_CONFIG_LOGLEVEL warn
-ENV API_URL localhost:8080
+ARG DOMAIN_URL=http://www.lumartex.com
+ENV API_URL http://www.lumartex.com:8080
+ENV ASSETS_PATH $DOMAIN_URL
 # Set working dir
 WORKDIR /srv/www
 # Bundle app source

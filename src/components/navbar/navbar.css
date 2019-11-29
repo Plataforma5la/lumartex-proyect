@@ -16,7 +16,6 @@
   }
 
   .navbarSection {
-    cursor: pointer;
     font-size: 14px;
     color: #000000;
     font-weight: 200;
@@ -25,9 +24,9 @@
     margin-bottom: 5px;
     text-decoration: none;
     text-transform: uppercase;
+    cursor: pointer;
   }
   .navbarSectionActive {
-    cursor: pointer;
     font-size: 14px;
     color: #000000;
     font-weight: 200;
@@ -37,6 +36,7 @@
     text-decoration: none;
     text-transform: uppercase;
     border-bottom: 1px solid #6788ff;
+    cursor: pointer;
   }
 
   .navbarSection:hover, .navbarSectionActive:hover  {
